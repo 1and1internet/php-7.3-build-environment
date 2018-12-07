@@ -13,7 +13,7 @@ RUN apt-get update \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
       php7.3-bcmath \
-      php7.3-bz2
+      php7.3-bz2 \
       php7.3-cli \
       php7.3-curl \
       php7.3-gd \
