@@ -1,17 +1,13 @@
-FROM ubuntu:18.04
+FROM 1and1internet/php-7.2-build-environment:latest
 MAINTAINER developmentteamserenity@fasthosts.com
 
+USER root
+
 RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get purge -y \
+      php7.2-common \
+    && DEBIAN_FRONTEND=noninteractive apt-get autoremove --purge -y \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      software-properties-common \
-      tzdata \
-      curl \
-      unzip \
-      git \
-      jq \
-    && add-apt-repository -y ppa:ondrej/php \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
       php7.3-bcmath \
       php7.3-bz2 \
       php7.3-cli \
@@ -27,16 +23,12 @@ RUN apt-get update \
       php7.3-sqlite3 \
       php7.3-xml \
       php7.3-zip \
-      php-redis \
       php-amqp \
-    && apt-get purge -y \
+      php-redis \
       software-properties-common \
-    && apt-get autoremove --purge -y \
+    && DEBIAN_FRONTEND=noninteractive apt-get purge -y \
+      software-properties-common \
+    && DEBIAN_FRONTEND=noninteractive apt-get autoremove --purge -y \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app/
-RUN chown 1000:1000 /app
 USER 1000
-ENV HOME /tmp
-
-COPY --chown=1000:1000 --from=composer:latest /usr/bin/composer /usr/bin/composer
