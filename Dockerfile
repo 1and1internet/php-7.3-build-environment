@@ -15,15 +15,17 @@ RUN apt-get update \
       php7.3-ldap \
       php7.3-mbstring \
       php7.3-mysql \
-      php7.3-opcache \
       php7.3-readline \
       php7.3-sqlite3 \
+      php7.3-xdebug \
       php7.3-xml \
       php7.3-zip \
       php-amqp \
       php-redis \
     && apt-get autoremove --purge -y \
     && rm -rf /var/lib/apt/lists/*
+
+COPY xdebug.ini /etc/php/7.3/mods-available
 
 USER 1000
 
