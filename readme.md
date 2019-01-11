@@ -2,7 +2,7 @@
 
 This image contains a light image based on ubuntu 18.04 LTS and includes the latest PHP 7.3 CLI binaries from the [Ondřej Surý](https://launchpad.net/~ondrej/+archive/ubuntu/php) PPA. It is built on top of [1and1internet/php-build-environment-base](https://cloud.docker.com/u/1and1internet/repository/docker/1and1internet/php-build-environment-base).
 
-It also has the following extensions installed:
+It has the following extensions installed:
 
 1. AMQP
 1. BCMath
@@ -36,4 +36,4 @@ It also includes a couple of text editors for convenience:
 
 Lastly, it also has the [prestissimo composer plugin](https://github.com/hirak/prestissimo), which allows parallel installs during composer installs and updates. and the latest stable release of [PsySH](https://psysh.org/) - a PHP REPL that's useful for debugging.
 
-The image is rebuilt nightly, as well as when the upstream images ([Ubuntu](https://hub.docker.com/_/ubuntu/) and [Composer](https://hub.docker.com/_/composer/)) push a new version. So this image should usually contain the latest fixes and updates.
+The parent image is rebuilt nightly, and this image tracks changes in it. So this image should usually contain the latest fixes and updates.
